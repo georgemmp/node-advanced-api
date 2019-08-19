@@ -1,20 +1,28 @@
 const express = require('express')
+const mongoose = require('mongoose')
 
-class App() {
-  constructor() {
-    this.express = express();
+const dbConfig = require('./config/database.config')
+
+class App {
+  constructor () {
+    this.express = express()
     this.isDev = process.env.NODE_ENV !== 'production'
-    this.middewares()
+    this.database()
+    this.middlewares()
     this.routes()
   }
 
-  middewares() {
+  database () {
+    mongoose.connect(dbConfig.uri, { useCreateIndex: true, useNewUrlParser: true })
+  }
+
+  middlewares () {
     this.express.use(express.json())
   }
 
-  routes() {
+  routes () {
     this.express.use(require('./routes'))
   }
 }
 
-module.exports = new App().express;
+module.exports = new App().express
