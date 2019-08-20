@@ -42,7 +42,7 @@ UserSchema.methods = {
 UserSchema.statics = {
   generateToken ({ id }) {
     return jwt.sign({ id }, ENV.SECRET, {
-      expiresIn: ENV.TTL
+      expiresIn: parseInt(ENV.TTL)
     })
   }
 }
