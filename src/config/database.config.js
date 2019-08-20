@@ -1,5 +1,5 @@
-require('dotenv').config()
+const ENV = require('../config/env.config')
 
 module.exports = {
-  uri: process.env.DATABASE_URI
+  uri: ENV.DATABASE_URI
 }
