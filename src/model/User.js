@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
 const ENV = require('../config/env.config')
 
 const UserSchema = new mongoose.Schema({
